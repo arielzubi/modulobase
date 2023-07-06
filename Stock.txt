@@ -1,0 +1,44 @@
+DROP DATABASE IF EXISTS stock;
+CREATE DATABASE stock CHARACTER SET utf8mb4;
+USE stock;
+
+CREATE TABLE proveedor (
+  idproveedor INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(50),
+  apellido VARCHAR(50),
+  direccion VARCHAR(50),
+  razonsocial VARCHAR(50),
+  rubro VARCHAR(100),
+   PRIMARY KEY(idproveedor)
+);
+
+CREATE TABLE mercaderia (
+  idmercaderia INT NOT NULL AUTO_INCREMENT,
+  producto VARCHAR(45) NOT NULL,
+  fecha DATE,
+  preciocompra DOUBLE NOT NULL,
+  stock INT NOT NULL,
+  idproveedor INT NOT NULL,
+  PRIMARY KEY (idmercaderia),
+  FOREIGN KEY (idproveedor) REFERENCES proveedor(idproveedor)
+);
+
+INSERT INTO proveedor VALUES(1, 'Kaminsky', 'Juan José', NULL, 'Colón 1515', 'perfumeria');
+INSERT INTO proveedor VALUES(2, NULL, NULL, 'El Mejor', 'Sarmiento 452', 'limpieza');
+INSERT INTO proveedor VALUES(3, 'Adolfo', 'Rubio', NULL, 'Alvear 876', 'bazar');
+INSERT INTO proveedor VALUES(4, 'Adrián', 'Suárez', 'Tornado', 'Lavalle 2830', 'perfumeria');
+INSERT INTO proveedor VALUES(5, NULL, NULL, 'Las 3 Emes', 'Italia 908','forrajeria');
+INSERT INTO proveedor VALUES(6, 'María', 'Santana', NULL, 'España 1323', 'comestibles');
+INSERT INTO proveedor VALUES(7, 'Pilar', 'Moreno', NULL, 'Francia 332', 'bazar');
+
+INSERT INTO mercaderia VALUES(1, 'Cacerola 15 lts.', '2022-10-05', 3548.00, 7,3);
+INSERT INTO mercaderia VALUES(2, 'Jabon liquido Skip', '2023-05-15', 2250.80, 24,2);
+INSERT INTO mercaderia VALUES(3, 'Jabon liquido Ala', '2023-05-15', 2548.75, 36,2);
+INSERT INTO mercaderia VALUES(4, 'Perfume 212 CH hombre', '2023-04-10', 36540.00, 6,1);
+INSERT INTO mercaderia VALUES(5, 'Perfume Acqua Di Gio hombre', '2023-05-12', 38600.00, 5,4);
+INSERT INTO mercaderia VALUES(6, 'Bolsa de residuos x30 Asurin', '2022-12-12', 332.25, 30,2);
+INSERT INTO mercaderia VALUES(7, 'Set cuchilos Tramontina x 3', '2023-02-22', 2100.00, 10,7);
+INSERT INTO mercaderia VALUES(8, 'Set tenedores Tramontina x 3', '2023-02-22', 1830.50, 10,7);
+INSERT INTO mercaderia VALUES(9, 'Rollo de cocina Sussex x 200', '2023-06-18', 445.00, 50,2);
+INSERT INTO mercaderia VALUES(10, 'Plato playo labrado Durax', '2022-11-28', 214.90, 48,3);
+
